@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Add student{% endblock %}
+{% block content %}
+<h1>Add student</h1>
+{% for e in errors %}<p class="error">{{ e }}</p>{% endfor %}
+<form method="post">
+  <label for="roll">Roll</label><input id="roll" name="roll" value="{{ form.get('roll', '') }}">
+  <label for="name">Name</label><input id="name" name="name" value="{{ form.get('name', '') }}">
+  {% for sub in subjects %}
+  <label for="{{ sub|lower }}">{{ sub }}</label><input id="{{ sub|lower }}" name="{{ sub|lower }}" value="{{ form.get(sub|lower, '') }}">
+  {% endfor %}
+  <button id="save-btn" type="submit">Save</button>
+</form>
+{% endblock %}

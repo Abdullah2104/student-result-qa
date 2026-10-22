@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Student Result System{% endblock %}</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 760px; margin: 40px auto; padding: 0 16px; color: #1d2733; }
+    nav { margin-bottom: 24px; } nav a { margin-right: 12px; }
+    label { display: block; margin-top: 12px; }
+    input { padding: 6px; width: 260px; }
+    button { margin-top: 16px; padding: 8px 18px; }
+    table { border-collapse: collapse; width: 100%; } td, th { border: 1px solid #ccd; padding: 6px 10px; text-align: left; }
+    .error { color: #b3261e; }
+  </style>
+</head>
+<body>
+  {% if session.get('user') %}
+  <nav><a id="nav-students" href="{{ url_for('students') }}">Students</a>
+       <a id="nav-add" href="{{ url_for('add_student') }}">Add student</a>
+       <a id="nav-logout" href="{{ url_for('logout') }}">Logout</a></nav>
+  {% endif %}
+  {% block content %}{% endblock %}
+</body>
+</html>

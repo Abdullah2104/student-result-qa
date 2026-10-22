@@ -1,0 +1,21 @@
+Test Case ID,Module,Title,Preconditions,Test Steps,Test Data,Expected Result,Actual Result,Status,Priority
+TC01,Login,Login with valid credentials,App running; on login page,1. Enter username 2. Enter password 3. Click Login,admin / admin123,Students page opens with heading 'Students',,,High
+TC02,Login,Login with wrong password,On login page,1. Enter username 2. Enter wrong password 3. Click Login,admin / wrong,Error 'Invalid username or password' shown,,,High
+TC03,Login,Login with empty fields,On login page,1. Leave both fields empty 2. Click Login,(empty),Error 'Username and password are required' shown,,,Medium
+TC04,Access control,Protected page without login,Not logged in,1. Open /students directly,—,Redirected to login page,,,High
+TC05,Logout,Logout ends session,Logged in,1. Click Logout 2. Open /students,—,Redirected to login page,,,Medium
+TC06,Add student,Add student with valid data,Logged in,1. Open Add student 2. Fill all fields 3. Click Save,Roll 101; Rahim; 85/78/90,Student appears in list,,,High
+TC07,Add student,Name is required,Logged in,1. Leave Name empty 2. Click Save,Name: (empty),Error 'Name is required',,,Medium
+TC08,Add student,Roll is required,Logged in,1. Leave Roll empty 2. Click Save,Roll: (empty),Error 'Roll is required',,,Medium
+TC09,Add student,Marks above 100 rejected,Logged in,1. Enter Mathematics 101 2. Click Save,Mathematics: 101,Error 'Marks must be between 0 and 100',,,High
+TC10,Add student,Negative marks rejected,Logged in,1. Enter Bangla -5 2. Click Save,Bangla: -5,Error 'Marks must be between 0 and 100',,,High
+TC11,Add student,Non-numeric marks rejected,Logged in,1. Enter English abc 2. Click Save,English: abc,Error 'Marks must be a whole number',,,Medium
+TC12,Add student,Duplicate roll rejected,Logged in; roll 200 already exists,1. Add another student with roll 200,Roll 200; Second,Error shown; roll 200 appears only once,,,High
+TC13,Result,Result shows correct average and grade,Student 300 exists with 85/78/90,1. Open result for roll 300,—,Average 84.33; Grade A+,,,High
+TC14,Result,Grade at boundary 80,Student 301 exists with 80/80/80,1. Open result for roll 301,—,Average 80.0; Grade A+; GPA 4.00,,,High
+TC15,Result,Unknown roll,Logged in,1. Open /students/9999,—,'Not found' page (HTTP 404),,,Low
+TC16,Result,Grade at boundary 79.99,Grading function,1. Call grade(79.99),79.99,Grade A,,,Medium
+TC17,Result,Lowest passing grade,Student exists with 40/40/40,1. Open result,—,Grade D; GPA 2.00,,,Medium
+TC18,Result,Fail grade,Student exists with 39/39/39,1. Open result,—,Grade F; GPA 0.00,,,Medium
+TC19,Add student,Marks at limits 0 and 100,Logged in,1. Enter 0 / 100 / 50 2. Click Save,0/100/50,Saved without error,,,Medium
+TC20,Add student,Decimal marks rejected,Logged in,1. Enter Bangla 45.5 2. Click Save,Bangla: 45.5,Error 'Marks must be a whole number',,,Low

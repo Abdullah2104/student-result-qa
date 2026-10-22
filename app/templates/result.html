@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Result{% endblock %}
+{% block content %}
+<h1>Result: <span id="student-name">{{ s.name }}</span></h1>
+<p>Roll: <span id="student-roll">{{ s.roll }}</span></p>
+<table>
+  {% for sub, m in marks.items() %}<tr><td>{{ sub }}</td><td>{{ m }}</td></tr>{% endfor %}
+</table>
+<p>Average: <span id="average">{{ avg }}</span></p>
+<p>Grade: <span id="grade">{{ letter }}</span> (GPA <span id="gpa">{{ '%.2f' % point }}</span>)</p>
+{% endblock %}

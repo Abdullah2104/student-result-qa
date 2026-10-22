@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Students{% endblock %}
+{% block content %}
+<h1>Students</h1>
+<table id="students-table">
+  <tr><th>Roll</th><th>Name</th><th>Result</th></tr>
+  {% for s in students %}
+  <tr class="student-row"><td class="roll">{{ s.roll }}</td><td class="name">{{ s.name }}</td>
+      <td><a href="{{ url_for('result', roll=s.roll) }}">View</a></td></tr>
+  {% endfor %}
+</table>
+{% endblock %}
